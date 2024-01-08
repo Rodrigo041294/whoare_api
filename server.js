@@ -12,7 +12,7 @@ app.use(searchcontroller);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://127.0.0.1:27017/whoare', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://127.0.0.1:27017/whoare')
     .then(() => {
         console.log("Successfully connected to the database");
     })
