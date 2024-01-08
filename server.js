@@ -1,16 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const apicontroller = require('./controllers/apicontroller');
+const authcontroller = require('./controllers/authController');
+const searchcontroller = require('./controllers/searchController');
 
 const app = express();
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use(apicontroller);
+app.use(authcontroller);
+app.use(searchcontroller);
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://127.0.0.1:27017/whoare')
+mongoose.connect('mongodb://127.0.0.1:27017/whoare', {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         console.log("Successfully connected to the database");
     })
